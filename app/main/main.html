@@ -1,0 +1,36 @@
+<div layout="vertical" layout-fill ng-cloak>
+
+  <md-content>
+    <header>
+      <acme-navbar creation-date="main.creationDate"></acme-navbar>
+    </header>
+
+    <section class="jumbotron">
+      <p>
+        I want to visit <acme-malarkey extra-values="['Chile', 'Paris', 'China']"></acme-malarkey>
+      </p>
+    </section>
+
+    <div class="techs" layout-align="center">
+      <md-card ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
+        <md-card-content>
+          <img class="pull-right animated infinite" ng-class="main.classAnimation" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
+          <h3 class="md-title">{{ awesomeThing.title }}</h3>
+          <p>{{ awesomeThing.description }}</p>
+        </md-card-content>
+        <div class="md-action-buttons">
+          <md-button ng-href="{{ awesomeThing.url }}">Website</md-button>
+        </div>
+      </md-card>
+    </div>
+  </md-content>
+
+  <md-content layout="column">
+    <md-virtual-repeat-container id="horizontal-container" md-orient-horizontal>
+      <div md-virtual-repeat="country in main.allCountries"
+           class="repeated-item" flex>
+          <p>{{ country.name }}</p>
+      </div>
+    </md-virtual-repeat-container>
+  </md-content>
+</div>
